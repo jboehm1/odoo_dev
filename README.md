@@ -1,49 +1,49 @@
-# Odoo Dev – Modules de test et carte statique
+# Odoo Dev – Test and Static Map Modules
 
-Ce repository contient des modules de test Odoo 16 pour la démonstration de fonctionnalités de base et la gestion avancée des adresses par Google Maps.
+This repository contains sample Odoo 16 modules for basic app demonstrations and advanced address management using Google Maps.
 
-## Modules inclus
+## Included Modules
 
-### 1. App Simple
+### 1. Simple App
 
-> Un module de démonstration qui illustre la structure minimale d’un add-on Odoo : manifest, modèle Python, vue XML.
+> A demo module showing the minimal structure of an Odoo add-on: manifest, Python model, XML view.
 
-- **But :** Fournir une base pour développer et tester des modules Odoo.
-- **Fichiers clés :** 
+- **Goal:** Provide a starting point for developing and testing Odoo modules.
+- **Key files:** 
     - `__init__.py`
     - `__manifest__.py`
     - `models/`
 
 ### 2. Address Map Static
 
-> Ce module permet d’**afficher une carte Google Maps statique** (Static Maps API) directement sur la fiche d’un contact (res.partner) à partir de l’adresse ou des coordonnées GPS renseignées.
+> This module enables you to **display a static Google Map** (Static Maps API) directly on a contact (res.partner) form, based on the stored address or GPS coordinates.
 
-**Fonctionnalités :**
-- Ajout d’un onglet ou d’un champ “Carte” sur le formulaire Contact.
-- Génération dynamique d’un visuel Google Maps selon l’adresse.
-- Paramétrage du module via Settings Odoo (configuration backend).
+**Features:**
+- Adds a "Map" tab or field to the contact form.
+- Dynamically generates a Google Maps image using the contact’s address.
+- Module can be configured from the Odoo backend Settings.
 
-#### Paramétrage (Settings)
+#### Settings
 
-Une option personnalisée est ajoutée dans le menu "Paramètres" d’Odoo via les `Settings` :
-- **Afficher la carte sur le formulaire Contact**
-    - Permet d’activer ou non l’affichage de la carte sur chaque fiche partenaire.
-    - Peut être modifié via le menu “Paramètres” > “Technical settings” > “Address Map Static”.
+A custom option is added to the Odoo Settings menu:
+- **Show map on contact form**
+    - Enables/disables the map display on each partner record.
+    - Can be managed from “Settings” > “Technical Settings” > “Address Map Static”.
 
-Un champ pour renseigner la **clé API Google Maps** peut être ajouté :
-- Permet d’utiliser le service Google Maps Static en toute sécurité, selon les quotas/API key du projet.
+Includes a field for your **Google Maps API Key**:
+- Lets you use the Google Maps Static service securely, according to your project’s API key and quotas.
 
-Fichier concerné :
-- `res_config_settings_view.xml` (vue des paramètres)
-- `models/res_config_settings.py` (gestion stockage config)
+Key files:
+- `res_config_settings_view.xml` (settings view)
+- `models/res_config_settings.py` (configuration storage)
 
-#### Structure du code
+#### Code Structure
 
-- `address_map/__init__.py` : init module
-- `address_map/__manifest__.py` : manifest Odoo
-- `address_map/models/` : modèles Python (contacts, config)
-- `address_map/views/` : vues XML (contact, settings)
+- `address_map/__init__.py`: module initializer
+- `address_map/__manifest__.py`: Odoo manifest
+- `address_map/models/`: Python models (contacts, config)
+- `address_map/views/`: XML views (contact, settings)
 
 ## Installation
 
-1. **Cloner le repository**
+1. **Clone the repository**
