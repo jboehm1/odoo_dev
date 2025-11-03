@@ -6,7 +6,7 @@ class ResPartner(models.Model):
 
     latitude = fields.Float(string="Latitude", digits=(16, 6))
     longitude = fields.Float(string="Longitude", digits=(16, 6))
-    map_html = fields.Html(string="Carte OpenStreetMap", compute="_compute_map_html", sanitize=False)
+    map_html = fields.Html(string="OpenStreetMap Map", compute="_compute_map_html", sanitize=False)
 
     @api.depends('street', 'street2', 'zip', 'city', 'country_id', 'latitude', 'longitude')
     def _compute_map_html(self):
@@ -17,7 +17,7 @@ class ResPartner(models.Model):
             lat = record.latitude if record.latitude else None
             lng = record.longitude if record.longitude else None
             
-            # Si pas de coordonnées, tente de géocoder
+            # If no coordinates, try to geocode the address
             if show_map == 'True':
                 if not (lat and lng) and (record.street or record.city):
                     address = ', '.join(filter(None, [
@@ -42,7 +42,7 @@ class ResPartner(models.Model):
                         lat = None
                         lng = None
 
-                # Si on a des coordonnées, formatte toujours en point !
+                # Alwaays convert to string with dot as decimal separator
                 if lat and lng:
                     lat_str = "{:.6f}".format(float(lat)).replace(",", ".")
                     lng_str = "{:.6f}".format(float(lng)).replace(",", ".")
@@ -56,4 +56,4 @@ class ResPartner(models.Model):
                         f'src="https://www.openstreetmap.org/export/embed.html?bbox={bbox_lng_min},{bbox_lat_min},{bbox_lng_max},{bbox_lat_max}'
                         f'&layer=mapnik&marker={lat_str},{lng_str}"></iframe>'
                     )
-            record.map_html = iframe or "<p>Aucune carte disponible</p>"
+            record.map_html = iframe or "<p>No map available</p>"

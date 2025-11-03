@@ -1,9 +1,9 @@
 {
     'name': 'Address Map Static',
-    'version': '1.0',
-    'summary': 'Affiche une carte statique pour une adresse ou coordonnées GPS',
+    'version': '1.0.1',
+    'summary': 'Adds static map display for partner addresses using OpenStreetMap',
     'category': 'Tools',
-    'author': 'Votre Nom',
+    'author': 'J.Boehm',
     'depends': ['base', 'contacts'],
     'data': [
         'views/res_partner_view.xml',

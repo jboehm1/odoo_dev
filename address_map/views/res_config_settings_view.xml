@@ -6,10 +6,23 @@
       <field name="model">res.config.settings</field>
       <field name="inherit_id" ref="base.res_config_settings_view_form"/>
       <field name="arch" type="xml">
-        <xpath expr="//div[@class='settings']" position="inside">
-          <group>
-            <field name="show_map"/>
-          </group>
+        <xpath expr="//div[hasclass('settings')]" position="inside">
+          <div class="app_settings_block" string="Custom ClickCon Settings" data-string="Address Map" data-key="address_map">
+            <h2>Address Map Settings</h2>
+            <div class="row mt16 o_settings_container">
+              <div class="col-12 col-lg-6 o_setting_box" id="address_map_settings_show_map">
+                <div class="o_setting_left_pane">
+                  <field name="show_map"/>
+                </div>
+                <div class="o_setting_right_pane">
+                  <label for="show_map" string="Show map on contact form"/>
+                  <div class="text-muted">
+                    Enable or disable the display of a static map for partner addresses.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </xpath>
       </field>
     </record>

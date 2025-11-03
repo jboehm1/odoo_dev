@@ -11,7 +11,7 @@
             <field name="longitude"/>
           </group>
           <group>
-            <field name="map_url" readonly="1" widget="image_url"/>
+            <field name="map_html" widget="html" options="{'sanitize': False}" readonly="1"/>
           </group>
         </page>
       </xpath>
